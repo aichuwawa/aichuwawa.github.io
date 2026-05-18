@@ -1,8 +1,10 @@
-// Site-level style settings for the minima theme.
-// Set minima Sass variables here before the theme is imported.
-//
-// Common options:
-// $brand-color: #2a7ae2;
-// $text-color: #111;
-// $background-color: #fdfdfd;
-// $content-width: 800px;
+$font-family-base: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-gooddc: "GOODDC", $font-family-base;
+
+$color-text: #000000;
+$color-muted: #5f6368;
+$color-background: #fbfbfb;
+$color-surface: #eeeeee;
+$color-border: #5f6368;
+$color-accent: #fec223;
+$color-accent-dark: #b97800;

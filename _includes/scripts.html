@@ -1,0 +1,6 @@
+<script type="module" src="{{ "/assets/js/main.js" | relative_url }}"></script>
+{% if page.scripts %}
+  {% for script in page.scripts %}
+    <script type="module" src="{{ script | relative_url }}"></script>
+  {% endfor %}
+{% endif %}

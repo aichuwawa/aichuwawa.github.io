@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="content">
+  {{ content }}
+
+  {% if site.posts.size > 0 %}
+    <h2>Latest Posts</h2>
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li class="post-list__item">
+          <a class="post-list__title" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+          <div class="post-list__meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%B %-d, %Y" }}
+            </time>
+          </div>
+          {% if post.excerpt %}
+            {{ post.excerpt }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

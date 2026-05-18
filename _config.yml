@@ -6,7 +6,7 @@ url: "https://aichuwawa.com"
 baseurl: ""
 repository: aichuwawa/aichuwawa.github.io
 domain: aichuwawa.com
-remote_theme: jekyll/minima@v2.5.2
+markdown: kramdown
 exclude:
   - AGENTS.md
   - CLAUDE.md
@@ -15,9 +15,9 @@ exclude:
   - README.md
   - aichuwawa.com.code-workspace
   - docker-compose.yml
+  - github-pages-jekyll-setup-plan.md
 rss: rss
 plugins:
-  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap

@@ -1,8 +1,8 @@
 ## Project
 
 This is the GitHub Pages user site for `aichuwawa.com`, served at
-`https://aichuwawa.com`. It uses Jekyll with the `github-pages` gem and the
-remote Minima theme pinned in `_config.yml`.
+`https://aichuwawa.com`. It uses Jekyll with the `github-pages` gem and local
+theme files in this repo. It does not use Minima, `theme`, or `remote_theme`.
 
 The initial Jekyll setup is documented in `github-pages-jekyll-setup-plan.md`.
 Treat that file as historical setup context, not as a public site page.
@@ -15,8 +15,8 @@ compatibility, or local development with Docker. Do not run `git commit` or
 
 SEO support is enabled through `jekyll-seo-tag` in `_config.yml`. The plugin is
 already bundled by the `github-pages` gem, so do not add a separate gem for it.
-The `minima` theme includes the SEO tag in its default head markup. If you ever
-override `_includes/head.html`, keep `{% seo %}` in the custom head.
+The local `_includes/head.html` must keep `{% seo %}` so pages get title tags,
+canonical URLs, Open Graph tags, Twitter card tags, and JSON-LD.
 
 Sitemap support is enabled through `jekyll-sitemap` in `_config.yml`. It
 generates `/sitemap.xml` during the Jekyll build. The root `robots.txt` points
@@ -39,33 +39,81 @@ only when a public page should be omitted from the generated sitemap.
 
 ## Styling
 
-This site uses `remote_theme: jekyll/minima@v2.5.2` so it can use the latest
-released Minima theme while still building on GitHub Pages. The normal place
-for style changes is `assets/main.scss` plus Sass partials in `_sass/`.
+This site uses local Sass files for its custom theme. The entrypoint is
+`assets/main.scss`; shared partials live in `_sass/`.
 
 The local `assets/main.scss` should keep this order:
 
 ```scss
+@import url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css");
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+@import "fonts";
 @import "variables";
-@import "minima";
+@import "base";
+@import "layout";
 @import "custom";
 ```
 
-Put minima variable overrides in `_sass/_variables.scss`. Put regular CSS or
-SCSS rules in `_sass/_custom.scss`. Do not edit generated files in `_site`, and
-do not edit files inside a downloaded theme cache or installed theme gem.
+Put `@font-face` rules in `_sass/_fonts.scss`, shared design settings in
+`_sass/_variables.scss`, element defaults in `_sass/_base.scss`, structural
+page styles in `_sass/_layout.scss`, and one-off site rules in
+`_sass/_custom.scss`. Do not edit generated files in `_site`.
+
+Custom font files live in `assets/fonts/`. Since `assets/main.scss` builds to
+`/assets/main.css`, font URLs in Sass should be relative to that CSS file, such
+as `url("fonts/GOODDC.woff")`.
 
 Font Awesome Free 7.2.0 is included through a pinned public jsDelivr CSS import
-in `assets/main.scss`. Keep that import before the Minima import so the browser
-can load the icon font stylesheet before site rules. Use Font Awesome classes
-in content only when an icon adds useful meaning or familiar visual scanning.
+in `assets/main.scss`. Use Font Awesome classes in content only when an icon
+adds useful meaning or familiar visual scanning.
 
-Avoid overriding Minima theme files. Prefer extending and inheriting from the
-theme through `_config.yml`, page front matter, local Sass partials, and site
-content. Only copy a Minima file into `_layouts/` or `_includes/` when the
-change cannot be made by extension. If an override is necessary, copy only that
-one file, keep the edit small, and leave a short note explaining why the
-override exists.
+Bulma 1.0.4 is included through a pinned public jsDelivr CSS import in
+`assets/main.scss`. Keep framework imports before local Sass partials so site
+styles can override framework defaults.
+
+Montserrat is loaded from Google Fonts in `_includes/head.html` using
+`preconnect` links plus the Google Fonts stylesheet link. Keep those tags in the
+head include, not in Sass, so the browser can start the font connection early.
+The base Sass font stack is `$font-family-base` in `_sass/_variables.scss`.
+
+## JavaScript
+
+Custom JavaScript uses plain browser ES modules with no bundler. The global
+entrypoint is `assets/js/main.js`, and shared modules live under
+`assets/js/modules/`.
+
+`_layouts/default.html` includes `_includes/scripts.html` before `</body>`, so
+`assets/js/main.js` runs on every page. Keep the script tag as
+`type="module"` and use `relative_url` for local asset paths.
+
+For page-specific modules, add a `scripts` list in page front matter:
+
+```yaml
+scripts:
+  - /assets/js/example-page.js
+```
+
+Use this only when a page needs its own behavior. Prefer small, focused modules
+over adding a JavaScript build step.
+
+## Theme Structure
+
+This repo owns its theme skeleton:
+
+- `_layouts/default.html` wraps every page.
+- `_layouts/home.html` renders the home page and post list.
+- `_layouts/page.html` renders regular pages.
+- `_layouts/post.html` renders posts.
+- `_includes/head.html` owns metadata, SEO, feed metadata, and the stylesheet.
+- `_includes/header.html` owns the site title and navigation.
+- `_includes/footer.html` owns the footer.
+- `_includes/scripts.html` owns global and page-specific ES module scripts.
+- `_data/navigation.yml` controls top-level navigation.
+- `assets/fonts/` stores local font files referenced by `_sass/_fonts.scss`.
+
+Prefer changing these local theme files directly instead of adding an external
+theme. Keep the skeleton small and avoid adding front-end build tools unless
+the site has a clear need for them.
 
 ## Prose
 
@@ -103,13 +151,7 @@ Prose blacklist:
 ## Editing
 
 Prefer minimal, targeted changes that preserve GitHub Pages compatibility. Use
-existing Jekyll, Liquid, SCSS, and minima conventions before adding custom
-structure.
-
-Do not override Minima `_layouts/` or `_includes/` unless necessary. If an
-override is needed, copy only the specific file from Minima and edit the
-smallest surface needed. Prefer extension and inheritance over replacing theme
-files.
+existing Jekyll, Liquid, and SCSS conventions before adding custom structure.
 
 Avoid decorative dependencies, generated artifacts, local editor state,
 unrelated rewrites, and removal of user-created changes.
