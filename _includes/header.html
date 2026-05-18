@@ -1,18 +1,111 @@
-<header class="site-header">
-  <div class="site-header__inner">
-    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+<header>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container">
 
-    {% if site.data.navigation %}
-      <nav class="site-nav" aria-label="Primary navigation">
+
+      <div class="navbar-brand">
+        <a class="navbar-item" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>    
+
+        <!--
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      -->
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-start">
+
+          <!--
+
+      {% if site.data.navigation %}
+
         {% for item in site.data.navigation %}
           {% assign item_url = item.url | relative_url %}
           <a
-            class="site-nav__link"
+            class="navbar-item"
             href="{{ item_url }}"
             {% if page.url == item.url %}aria-current="page"{% endif %}
           >{{ item.title | escape }}</a>
         {% endfor %}
-      </nav>
-    {% endif %}
+
+      {% endif %}
+
+        -->
+
+          <!--
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Recipes
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item is-selected">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Meal Plans
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item is-selected">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          
+          
+          </div>    
+        -->          
+        </div>
+
+        <!--
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      -->
+
+      </div>
+
   </div>
+</nav>
+
+    
+
+
+
 </header>

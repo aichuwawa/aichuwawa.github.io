@@ -1,18 +1,29 @@
 <!doctype html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
   {% include head.html %}
+
   <body>
-    <div class="site">
-      {% include header.html %}
 
-      <main class="site-main" id="content">
-        <div class="page-shell">
-          {{ content }}
+    {% include header.html %}
+
+    <section class="hero is-link is-medium">
+      <div class="hero-body">
+        <div class="container">
+          <p class="hero-title">Welcome to Aichuwawa!</p>
         </div>
-      </main>
+      </div>
+    </section>    
 
-      {% include footer.html %}
-    </div>
+    <main class="site-main" id="content">
+      <div class="container">
+        {{ content }}
+      </div>
+    </main>
+
+    {% include footer.html %}
+
     {% include scripts.html %}
+
   </body>
 </html>

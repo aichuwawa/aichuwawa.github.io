@@ -1,2 +1,129 @@
 // Site-specific CSS rules go here.
 // Keep these rules focused on this site. Do not edit generated files in _site.
+
+// Bulma breakpoints. Bulma is imported as compiled CSS, so these local Sass
+// helpers make the same breakpoint values available to custom site rules.
+$gap: 32px !default;
+$tablet: 769px !default;
+$desktop: 960px + (2 * $gap) !default; // 1024px
+$widescreen: 1152px + (2 * $gap) !default; // 1216px
+$fullhd: 1344px + (2 * $gap) !default; // 1408px
+
+@mixin from($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin until($breakpoint) {
+  @media screen and (max-width: $breakpoint - 1px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include until($tablet) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include from($tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin touch {
+  @include until($desktop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include from($desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media screen and (min-width: $desktop) and (max-width: $widescreen - 1px) {
+    @content;
+  }
+}
+
+@mixin until-widescreen {
+  @include until($widescreen) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @include from($widescreen) {
+    @content;
+  }
+}
+
+@mixin widescreen-only {
+  @media screen and (min-width: $widescreen) and (max-width: $fullhd - 1px) {
+    @content;
+  }
+}
+
+@mixin until-fullhd {
+  @include until($fullhd) {
+    @content;
+  }
+}
+
+@mixin fullhd {
+  @include from($fullhd) {
+    @content;
+  }
+}
+
+
+// Mobile/base: all sizes unless overridden.
+
+.navbar-brand > .navbar-item {
+  // Header logo: an image replaces the site.title text. The text stays in the
+  // DOM for screen readers, RSS, and SEO; text-indent: -9999px shoves it
+  // off-screen so only the image is visible.
+  display: block;
+  width: 165px;
+  height: 80px;
+  background: url("/assets/images/aichuwawa-logo.png") no-repeat center / contain;
+  text-indent: -9999px;
+  overflow: hidden;
+  white-space: nowrap;   
+}
+
+.hero-title {
+    text-align: center;
+    font-family: $font-family-gooddc;
+    font-size: 2.25rem;
+    letter-spacing: 3px;
+}
+
+.home section.hero {
+    background-image: url("/assets/images/homepage-hero.jpg");
+}
+
+// Tablet only: 769px-1023px.
+  @include tablet-only {
+    .hero-title {
+      font-size: 3.5rem;
+    }
+  }
+
+// Desktop and wider: 1024px+.
+@include desktop {
+    .hero-title {
+        font-size: 5rem;
+    }
+}
