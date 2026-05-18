@@ -1,0 +1,121 @@
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ============================================================
+# Windows
+# ============================================================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
+*.lnk
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# ============================================================
+# Linux (handy for cross-platform teams)
+# ============================================================
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================
+# Editor / IDE general
+# ============================================================
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+
+# ============================================================
+# Visual Studio Code
+# ============================================================
+# Ignore the folder by default; whitelist files you want to share.
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.code-workspace
+
+# ============================================================
+# Claude Code
+# ============================================================
+# Share project-wide context (CLAUDE.md) but keep personal/local stuff out.
+.claude/
+!CLAUDE.md
+CLAUDE.local.md
+.mcp.local.json
+
+# ============================================================
+# OpenAI Codex (CLI / agents)
+# ============================================================
+.codex/
+AGENTS.local.md
+
+# ============================================================
+# Secrets / environment
+# ============================================================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ============================================================
+# Jekyll / GitHub Pages
+# ============================================================
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+# Remove this line if you want to lock gem versions for Pages.
+Gemfile.lock
+
+# ============================================================
+# Node (asset pipelines, Tailwind, etc.)
+# ============================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ============================================================
+# Logs / build output / misc
+# ============================================================
+*.log
+.cache/
+dist/
+tmp/

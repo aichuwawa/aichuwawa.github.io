@@ -1,0 +1,23 @@
+title: Aichuwawa
+author: Aichuwawa
+email:
+description: A small site for Aichuwawa.
+url: "https://aichuwawa.com"
+baseurl: ""
+repository: aichuwawa/aichuwawa.github.io
+domain: aichuwawa.com
+remote_theme: jekyll/minima@v2.5.2
+exclude:
+  - AGENTS.md
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - aichuwawa.com.code-workspace
+  - docker-compose.yml
+rss: rss
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap

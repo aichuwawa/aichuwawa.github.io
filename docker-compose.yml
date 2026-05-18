@@ -1,0 +1,14 @@
+services:
+  site:
+    image: ruby:3.3.4-bookworm
+    working_dir: /srv/jekyll
+    command: sh -lc "bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling"
+    volumes:
+      - .:/srv/jekyll
+      - bundle:/usr/local/bundle
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+
+volumes:
+  bundle:
