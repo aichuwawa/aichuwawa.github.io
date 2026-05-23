@@ -108,6 +108,17 @@ $fullhd: 1344px + (2 * $gap) !default; // 1408px
   white-space: nowrap;   
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .navbar-brand > .navbar-item {
+    background-image: url("/assets/images/aichuwawa-logo-dark.png");
+  }
+}
+
+[data-theme="dark"] .navbar-brand > .navbar-item,
+.theme-dark .navbar-brand > .navbar-item {
+  background-image: url("/assets/images/aichuwawa-logo-dark.png");
+}
+
 .hero-title {
     text-align: center;
     font-family: $font-family-gooddc;
