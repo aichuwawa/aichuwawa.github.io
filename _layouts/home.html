@@ -3,12 +3,14 @@ layout: default
 ---
 
 <div class="content">
-  {{ content }}
+  {% if paginator.page == 1 or paginator == nil %}
+    {{ content }}
+  {% endif %}
 
-  {% if site.posts.size > 0 %}
+  {% if paginator.posts.size > 0 %}
     <h2>Latest Posts</h2>
     <ul class="post-list">
-      {% for post in site.posts %}
+      {% for post in paginator.posts %}
         <li class="post-list__item">
           <a class="post-list__title" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
@@ -26,3 +28,32 @@ layout: default
     </ul>
   {% endif %}
 </div>
+
+{% if paginator.total_pages > 1 %}
+  <nav class="pagination is-centered" role="navigation" aria-label="Post pagination">
+    {% if paginator.previous_page %}
+      <a class="pagination-previous"
+         href="{{ paginator.previous_page_path | relative_url }}">
+        Newer posts
+      </a>
+    {% else %}
+      <span class="pagination-previous is-disabled" aria-disabled="true">
+        Newer posts
+      </span>
+    {% endif %}
+
+    {% if paginator.next_page %}
+      <a class="pagination-next"
+         href="{{ paginator.next_page_path | relative_url }}">
+        Older posts
+      </a>
+    {% else %}
+      <span class="pagination-next is-disabled" aria-disabled="true">
+        Older posts
+      </span>
+    {% endif %}
+  </nav>
+  <p class="has-text-centered is-size-7">
+    Page {{ paginator.page }} of {{ paginator.total_pages }}
+  </p>
+{% endif %}

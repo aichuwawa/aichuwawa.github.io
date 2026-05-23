@@ -16,8 +16,13 @@ exclude:
   - aichuwawa.com.code-workspace
   - docker-compose.yml
   - github-pages-jekyll-setup-plan.md
+  - homepage-pagination-plan.md
 rss: rss
 plugins:
   - jekyll-feed
+  - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
+
+paginate: 10
+paginate_path: "/page/:num/"

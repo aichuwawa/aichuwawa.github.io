@@ -20,3 +20,7 @@
 // - How does the footer sit at the bottom?
 // - How are post lists spaced?
 // - What changes on mobile?
+
+.content + .pagination {
+  margin-top: 2rem;
+}

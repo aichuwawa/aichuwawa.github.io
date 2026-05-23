@@ -45,7 +45,7 @@ This site uses local Sass files for its custom theme. The entrypoint is
 The local `assets/main.scss` should keep this order:
 
 ```scss
-@import url("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css");
+@import "https://use.fontawesome.com/releases/v7.2.0/css/all.css";
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
 @import "fonts";
 @import "variables";
@@ -63,9 +63,10 @@ Custom font files live in `assets/fonts/`. Since `assets/main.scss` builds to
 `/assets/main.css`, font URLs in Sass should be relative to that CSS file, such
 as `url("fonts/GOODDC.woff")`.
 
-Font Awesome Free 7.2.0 is included through a pinned public jsDelivr CSS import
-in `assets/main.scss`. Use Font Awesome classes in content only when an icon
-adds useful meaning or familiar visual scanning.
+Font Awesome Free 7.2.0 is included through a pinned public
+`use.fontawesome.com` CSS import in `assets/main.scss`. Use Font Awesome
+classes in content only when an icon adds useful meaning or familiar visual
+scanning.
 
 Bulma 1.0.4 is included through a pinned public jsDelivr CSS import in
 `assets/main.scss`. Keep framework imports before local Sass partials so site
