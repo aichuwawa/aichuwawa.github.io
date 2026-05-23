@@ -21,6 +21,31 @@
 // - How are post lists spaced?
 // - What changes on mobile?
 
+.site-main {
+  padding: 0 1rem;
+}
+
 .content + .pagination {
   margin-top: 2rem;
+}
+
+.post-list {
+  margin-top: 3rem;
+}
+
+.content .post-list .media-left {
+  margin: 0 1rem 0 0;
+}
+
+.post-list__image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-list__title {
+  display: inline-block;
+}
+
+.post-list__meta {
+  color: var(--bulma-text-weak);
 }

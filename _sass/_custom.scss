@@ -90,6 +90,11 @@ $fullhd: 1344px + (2 * $gap) !default; // 1408px
 
 // Mobile/base: all sizes unless overridden.
 
+.homepage-title,
+.post-title {
+  margin: 2rem 0 0 0;
+}
+
 .navbar-brand > .navbar-item {
   // Header logo: an image replaces the site.title text. The text stays in the
   // DOM for screen readers, RSS, and SEO; text-indent: -9999px shoves it
@@ -110,7 +115,7 @@ $fullhd: 1344px + (2 * $gap) !default; // 1408px
     letter-spacing: 3px;
 }
 
-.home section.hero {
+section.hero {
     background-image: url("/assets/images/homepage-hero.jpg");
 }
 

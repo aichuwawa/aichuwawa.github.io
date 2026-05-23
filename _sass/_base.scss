@@ -11,3 +11,16 @@
 // img
 // table
 // hr
+
+body {
+  font-family: $font-family-base;
+}
+
+h1,
+h2,
+h3,
+.content h1,
+.content h2,
+.content h3 {
+  font-weight: 400;
+}

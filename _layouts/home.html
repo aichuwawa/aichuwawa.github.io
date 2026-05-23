@@ -2,30 +2,57 @@
 layout: default
 ---
 
+<section class="hero is-link is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <p class="hero-title">Welcome to Aichuwawa!</p>
+    </div>
+  </div>
+</section>    
+
 <div class="content">
   {% if paginator.page == 1 or paginator == nil %}
     {{ content }}
   {% endif %}
 
   {% if paginator.posts.size > 0 %}
-    <h2>Latest Posts</h2>
-    <ul class="post-list">
+    <h2 class="homepage-title">Latest Recipes</h2>
+    <div class="post-list">
       {% for post in paginator.posts %}
-        <li class="post-list__item">
-          <a class="post-list__title" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-          <div class="post-list__meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">
-              {{ post.date | date: "%B %-d, %Y" }}
-            </time>
-          </div>
-          {% if post.excerpt %}
-            {{ post.excerpt }}
+        {% assign post_excerpt = post.excerpt | strip_html | strip %}
+        <article class="media post-list__item">
+          {% if post.image %}
+            <figure class="media-left">
+              <a class="image is-128x128 post-list__image" href="{{ post.url | relative_url }}">
+                <img
+                  src="{{ post.image | relative_url }}"
+                  alt="{{ post.image_alt | default: post.title | escape }}"
+                  loading="lazy">
+              </a>
+            </figure>
           {% endif %}
-        </li>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <a class="post-list__title" href="{{ post.url | relative_url }}">
+                  <strong>{{ post.title | escape }}</strong>
+                </a>
+                <br>
+                <small class="post-list__meta">
+                  <time datetime="{{ post.date | date_to_xmlschema }}">
+                    {{ post.date | date: "%B %-d, %Y" }}
+                  </time>
+                </small>
+                {% if post_excerpt %}
+                  <br>
+                  <span class="post-list__excerpt">{{ post_excerpt | escape }}</span>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </article>
       {% endfor %}
-    </ul>
+    </div>
   {% endif %}
 </div>
 
