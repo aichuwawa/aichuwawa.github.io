@@ -8,15 +8,15 @@ repository: aichuwawa/aichuwawa.github.io
 domain: aichuwawa.com
 markdown: kramdown
 exclude:
+  - .gitignore
   - AGENTS.md
   - CLAUDE.md
   - Gemfile
   - Gemfile.lock
   - README.md
+  - _site/
   - aichuwawa.com.code-workspace
   - docker-compose.yml
-  - github-pages-jekyll-setup-plan.md
-  - homepage-pagination-plan.md
 rss: rss
 plugins:
   - jekyll-feed
